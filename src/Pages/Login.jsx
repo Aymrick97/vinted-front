@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Login = ({ handleToken }) => {
+const Login = ({ gestionToken }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -27,7 +27,7 @@ const Login = ({ handleToken }) => {
                 }
               );
               if (response.data.token) {
-                handleToken(response.data.token);
+                gestionToken(response.data.token);
                 navigate("/");
               }
               // console.log(response.data);

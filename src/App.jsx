@@ -17,7 +17,7 @@ function App() {
   //input de recherche
   const [lookingFor, setLookingFor] = useState("");
   //cookies
-  const handleToken = (token) => {
+  const gestionToken = (token) => {
     if (token) {
       setToken(token);
       Cookies.set("TokenSite", token, { expires: 7 });
@@ -29,7 +29,7 @@ function App() {
   return (
     <Router>
       <Header
-        handleToken={handleToken}
+        gestionToken={gestionToken}
         token={token}
         lookingFor={lookingFor}
         setLookingFor={setLookingFor}
@@ -39,9 +39,12 @@ function App() {
         <Route path="/" element={<Home lookingFor={lookingFor} />} />
         {/*  envoyé lookingFor pour Home  */}
         <Route path="/Offres/:id" element={<Offres />} />
-        <Route path="/signup" element={<SignUp handleToken={handleToken} />} />
+        <Route
+          path="/signup"
+          element={<SignUp gestionToken={gestionToken} />}
+        />
         {/*  envoyé token pour signup  */}
-        <Route path="/login" element={<Login handleToken={handleToken} />} />
+        <Route path="/login" element={<Login gestionToken={gestionToken} />} />
         {/*  envoyé token pour login  */}
         <Route path="/publish" element={<Publish token={token} />}></Route>
       </Routes>

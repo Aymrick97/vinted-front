@@ -2,12 +2,12 @@ import logo from "../assets/images/logo.png";
 import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
 
 //recuperer tout ce que jai envoyer depuis app.jsx
-const Header = ({ token, handleToken, setLookingFor, lookingFor }) => {
+const Header = ({ token, gestionToken, setLookingFor, lookingFor }) => {
   //console.log(token);
   const navigate = useNavigate();
   const handleClick = () => {
-    if (handleToken) {
-      handleToken(null);
+    if (gestionToken) {
+      gestionToken(null);
     }
     navigate("/");
   };
@@ -29,15 +29,7 @@ const Header = ({ token, handleToken, setLookingFor, lookingFor }) => {
         <div>
           {token ? (
             <div className="head2">
-              <button
-                id="deconect"
-                /* onClick={() => {
-                  if (handleToken) {
-                    handleToken(null);
-                  }
-                }} */
-                onClick={handleClick}
-              >
+              <button id="deconect" onClick={handleClick}>
                 Se deconnecter
               </button>
             </div>
