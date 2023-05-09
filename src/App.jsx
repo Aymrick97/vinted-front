@@ -2,6 +2,11 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "./App.css";
 import Cookies from "js-cookie";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+const stripePromise = loadStripe(
+  "pk_live_51JhjboKGwKdskFHCtii1Xxo2OsCWJUuMyxyylDWCflhVTgbtAdP5YYQndKUUL2Gsy3qATvmDkH5yVYFI3dDt76kR004OupTIKq"
+);
 
 //importer mes pages pour le router
 import Header from "./components/Header";
@@ -10,6 +15,7 @@ import Offres from "./Pages/Offres";
 import SignUp from "./Pages/SignUp";
 import Login from "./Pages/Login";
 import Publish from "./Pages/Publish";
+import Payment from "./Pages/Payment";
 
 function App() {
   // token
@@ -47,6 +53,7 @@ function App() {
         <Route path="/login" element={<Login gestionToken={gestionToken} />} />
         {/*  envoyé token pour login  */}
         <Route path="/publish" element={<Publish token={token} />}></Route>
+        <Route path="/payment" element={<Payment />}></Route>
       </Routes>
     </Router>
   );

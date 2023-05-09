@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Offres = () => {
   const [data, setData] = useState();
@@ -64,7 +65,9 @@ const Offres = () => {
                   <p>{data.owner.account.username}</p>
                 </div>
               </div>
-              <button id="achat">Acheter</button>
+              <Link to="/payment">
+                <button id="achat">Acheter</button>
+              </Link>
             </div>
           </div>
         </div>
